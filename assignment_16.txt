@@ -1,0 +1,102 @@
+1.
+
+def valid_rondo(s):
+    if s[0] == s[-1] == 'A' and len(s) > 1:
+        for i in range(1,len(s)-1):
+            if s[i] != 'A' and s.count(s[i]) > 1:
+                return False
+
+        return True
+    else:
+        return False
+    
+
+print(valid_rondo("ABACADAEAFAGAHAIAJA"))
+print(valid_rondo("ABA"))
+print(valid_rondo("ABBACCA"))
+print(valid_rondo("ACAC"))
+print(valid_rondo("A"))
+
+
+2.
+
+
+def sentence_searcher(txt, s):
+    for i in txt.split('.'):
+        if s.lower() in i.lower():
+            i = i.strip()
+            i += '.'
+            return i
+    else:
+        return ""
+    
+txt = "I have a cat. I have a mat. Things are going swell."
+    
+print(sentence_searcher(txt, "have"))
+
+print(sentence_searcher(txt, "MAT"))
+
+print(sentence_searcher(txt, "things"))
+
+print(sentence_searcher(txt, "flat"))
+
+
+3.
+
+
+
+def sum_round(n):
+    n = str(n)
+    output = ''
+    j = 1
+    for i in range(len(n)-1,-1,-1):
+        output += str(int(n[i]) * j) + ' '
+        j *= 10
+
+    output = output.lstrip('0 ').replace(' 0','')
+    return output.strip()        
+        
+print(sum_round(1001))
+
+print(sum_round(1234))
+
+print(sum_round(54210))
+
+print(sum_round(542010))
+
+
+4.
+
+
+def multiplication_table(n):
+    l = []
+    k = 1
+    
+    for i in range(n):
+        l1 = []
+        for j in range(1,n+1):
+            l1.append(j * k)
+        l.append(l1)    
+        k += 1
+        
+    return l 
+
+print(multiplication_table(1))
+print(multiplication_table(3))
+
+
+5.
+
+
+def does_rhyme(s,s1):
+    for letter in s.split()[-1]:
+        for letter1 in s1.split()[-1]:
+            if letter.lower() in "aieou" and letter1.lower() in "aeiou":
+                if letter.lower() != letter1.lower():
+                    return False
+    return True            
+            
+print(does_rhyme("Sam I am!", "Green eggs and ham."))
+print(does_rhyme("Sam I am!", "Green eggs and HAM.") )
+print(does_rhyme("You are off to the races", "a splendid day."))
+print(does_rhyme("and frequently do?", "you gotta move."))
